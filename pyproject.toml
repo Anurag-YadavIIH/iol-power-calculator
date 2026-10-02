@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "iol-power-calculator"
+version = "0.1.0"
+description = "Intraocular lens power calculator (vergence, SRK I, SRK/T) with input validation and tests. Learning tool, not for clinical use."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Anurag Yadav" }]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "matplotlib>=3.5", "jupyter", "ruff"]
+
+[project.scripts]
+iol-calc = "iol_calc.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "RUF"]
